@@ -48,30 +48,76 @@
     }
 
     async function shareMsg() {
+      await liff.shareTargetPicker([
+        {
+        "type":"text",
+        "text":"this message was sent by shareTargetPicker"
+        }
+      ])
     }
 
     function logOut() {
+      liff.logout()
+      window.location.reload()
     }
 
     function closed() {
+      liff.closeWindow()
     }
 
     async function scanCode() {
+      const result = await liff.scanCode()
+      liff.openWindow({
+      url:result.value,
+      external:false
+      })
+      document.getElementById("scanCode").append(result.value)
     }
 
     function openWindow() {
+      liff.openWindow({
+      url:"https://line.me",
+      external:true
+      })
     }
 
     async function getFriendship() {
+      const friend = await liff.getFriendship()
+      document.getElementById("friendship").append(friend.friendFlag)
+      if(!friend.friendFlag) {
+        if(confirm("you are not in bot is friend list. Wanna add friend now?")) {
+        window.location = "https://line.me/R/ti/p/@275asvgw"
+        }
+      }
     }
 
     async function sendMsg() {
+      if (liff.getContext().type !== "none") {
+      await liff.sendMessages([
+        {
+          "type":"sticker",
+          "stickerId":1,
+          "packageId":1
+        }
+      ])
+      alert("Message sent")
     }
 
     function getContext() {
+      document.getElementById("type").append(liff.getContext().type)
+      document.getElementById("viewType").append(liff.getContext().viewType)
+      document.getElementById("utouId").append(liff.getContext().utouId)
+      document.getElementById("roomId").append(liff.getContext().roomId)
+      document.getElementById("groupId").append(liff.getContext().groupId)
     }
 
     async function getUserProfile() {
+      const profile = await liff.getProfile()
+      document.getElementById("PictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("statusMessage").append(profile.statusMessage)
+      document.getElementById("displayNmae").append(profile.displayName)
+      document.getElementById("decodeIDToken").append(liff.getDecodeIDToken().email)
     }
 
     function getEnvironment() {
@@ -93,8 +139,8 @@
     async function main() {
       alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "2003374875" })
-      // getEnvironment()
-      // getUserProfile()
+      getEnvironment()
+      getUserProfile()
       // getContext()
       // getFriendship()
       // createUniversalLink()
