@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css" media="all">
 </head>
 <body>
-  <p id="os"><b>OS Meeeeeeeeee:</b> </p>
+  <p id="os"><b>OS Me:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
   <p id="isInClient"><b>isInClient:</b> </p>
@@ -36,6 +36,7 @@
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
 
+
   <!-- <script src="js/vconsole.min.js"></script> -->
   <!-- <script>
     var vConsole = new VConsole()
@@ -44,7 +45,7 @@
 
   <!-- <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
   <script>
-    document.getElementById("os").innerHTML = "Hello JavaScript!";
+
     function createUniversalLink() {
     }
 
@@ -93,15 +94,16 @@
     }
 
     async function sendMsg() {
-      if (liff.getContext().type !== "none") {
-      await liff.sendMessages([
-        {
-          "type":"sticker",
-          "stickerId":1,
-          "packageId":1
-        }
-      ])
-      alert("Message sent")
+        if (liff.getContext().type !== "none") {
+        await liff.sendMessages([
+          {
+            "type":"sticker",
+            "stickerId":1,
+            "packageId":1
+          }
+        ])
+        alert("Message sent")
+      }
     }
 
     function getContext() {
@@ -123,7 +125,7 @@
 
     function getEnvironment() {
       document.getElementById("os").append(liff.getOS())
-      document.getElementById("language").append(liff.getLanguage
+      document.getElementById("language").append(liff.getLanguage)
       document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
       document.getElementById("isInClient").append(liff.isInClient())
@@ -146,7 +148,7 @@
       getFriendship()
       //createUniversalLink()
     }
-    //main()
+    main()
   </script>
 </body>
 </html>
