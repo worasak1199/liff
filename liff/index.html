@@ -115,7 +115,9 @@
     }
 
     async function getUserProfile() {
+      alert("get email")
       const profile = await liff.getProfile()
+      alert(liff.getDecodeIDToken().email)
       //document.getElementById("PictureUrl").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
@@ -140,7 +142,7 @@
     }
 
     async function main() {
-      alert("LINE Developers x Skooldio")
+      alert("LINE Developers (Ada Boss)")
       await liff.init({ liffId: "2003374875-wlQPp6na" })
       getEnvironment()
       getUserProfile()
