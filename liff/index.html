@@ -117,12 +117,11 @@
     async function getUserProfile() {
       alert("get email")
       const profile = await liff.getProfile()
-      alert(profile.email)
       //document.getElementById("PictureUrl").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("decodedIDToken").append(liff.getDecodeIDToken().email)
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
     function getEnvironment() {
