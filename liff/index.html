@@ -115,6 +115,7 @@
     }
 
     async function getUserProfile() {
+      alert("แปลง Base")
       const profile = await liff.getProfile()
       alert(getBase64Image(profile.pictureUrl))
       document.getElementById("userId").append(profile.userId)
