@@ -115,9 +115,8 @@
     }
 
     async function getUserProfile() {
-      alert("get email text")
       const profile = await liff.getProfile()
-      alert(liff.getDecodedIDToken().email)
+      alert(profile.pictureUrl)
       document.getElementById("userId").append(profile.userId)
       document.getElementById("statusMessage").append(profile.statusMessage)
       document.getElementById("displayName").append(profile.displayName)
